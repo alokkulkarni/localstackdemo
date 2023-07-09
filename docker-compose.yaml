@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"            # LocalStack endpoint
+    #      - "4510-4559:4510-4559"  # external services port range
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - ./localstack-script:/etc/localstack/init/ready.d
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  mysql:
+    image: mysql/mysql-server:5.7
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: password
