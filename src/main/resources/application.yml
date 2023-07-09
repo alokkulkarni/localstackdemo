@@ -22,10 +22,16 @@ spring:
     aws:
       secretsmanager:
         region: us-east-1
-        endpoint: http://localhost:4566
+        endpoint: http://localhost:4566 #localstack url
       credentials:
         access-key: none
         secret-key: none
+
+# uncomment this to connect to actual AWS region - uses locally stored credential configs.
+#  cloud:
+#    aws:
+#      secretsmanager:
+#        region: us-east-1
 
     credentials:
       profile:
